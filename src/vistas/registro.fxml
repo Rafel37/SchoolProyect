@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" style="-fx-background-image: url(recursos/fondo.jpeg);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladoras.Controladora_Registro">
+   <center>
+      <GridPane maxHeight="800.0" maxWidth="800.0" minHeight="200.0" minWidth="200.0" prefHeight="527.0" prefWidth="592.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="300.0" minHeight="10.0" prefHeight="76.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="300.0" minHeight="10.0" prefHeight="148.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="300.0" minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="300.0" minHeight="10.0" prefHeight="165.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="300.0" minHeight="10.0" prefHeight="90.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <padding>
+            <Insets bottom="35.0" left="30.0" right="30.0" top="30.0" />
+         </padding>
+         <children>
+            <JFXCheckBox fx:id="conocimientosCheckRegistro" checkedColor="#000096" text="Conocimientos previos" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
+            <JFXButton fx:id="bRegistrarRegistro" text="Registrar" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </JFXButton>
+            <JFXTextField fx:id="apellidosRegistro" promptText="Introduce apellidos" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <JFXTextField fx:id="nombreRegistro" promptText="Introduce nombre" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+            <JFXPasswordField fx:id="passRegistro" promptText="Introduce contraseña" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+            <JFXTextField fx:id="correo2Registro" promptText="Confirma correo" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <JFXTextField fx:id="correo1Registro" promptText="Introduce correo" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+            <JFXComboBox fx:id="comboRegistro" maxWidth="1.7976931348623157E308" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <Label alignment="CENTER" prefHeight="26.0" prefWidth="126.0" style="-fx-background-color: WHITE;" text="REGISTRO" textAlignment="CENTER" GridPane.halignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="bIndice" prefHeight="58.0" prefWidth="62.0" style="-fx-background-image: url(recursos/indice.jpeg);" GridPane.valignment="TOP" />
+         </children>
+         <BorderPane.margin>
+            <Insets left="5.0" />
+         </BorderPane.margin>
+      </GridPane>
+   </center>
+</BorderPane>
