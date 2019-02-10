@@ -142,10 +142,7 @@ public class Controladora_Login implements Initializable {
                     registroLogin.getScene().setCursor(Cursor.CLOSED_HAND);
                 } else if (event.getEventType() == MouseEvent.MOUSE_RELEASED) {
                     registroLogin.getScene().setCursor(Cursor.OPEN_HAND);
-                }
-
-                // CREAR FICHERO DE RECORDAR CONTRASEÑA
-                else if (event.getEventType() == MouseEvent.MOUSE_CLICKED) {
+                } else if (event.getEventType() == MouseEvent.MOUSE_CLICKED) {
                     Parent root;
                     Scene scene;
                     Stage stage;
@@ -173,9 +170,9 @@ public class Controladora_Login implements Initializable {
             // RECORDAR CONTRASEÑA
             if (event.getSource() == inicioLogin && event.getSource() == recordarLogin) {
 
-                File f = null;
+                File f;
                 f = new File("src/sesiones/sesiones.txt");
-                FileWriter fw = null;
+                FileWriter fw;
                 BufferedWriter bw;
 
                 try {
