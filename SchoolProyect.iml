@@ -19,5 +19,7 @@
     </orderEntry>
     <orderEntry type="library" name="jfoenix-8.0.8" level="project" />
     <orderEntry type="library" name="jdk1.8" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-5.1.46" level="project" />
+    <orderEntry type="library" name="mysql" level="project" />
   </component>
 </module>

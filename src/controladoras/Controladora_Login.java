@@ -49,6 +49,7 @@ public class Controladora_Login implements Initializable {
         inicioLogin.setOnMouseEntered(new ManejoRaton());
         inicioLogin.setOnMousePressed(new ManejoRaton());
         inicioLogin.setOnMouseReleased(new ManejoRaton());
+        inicioLogin.setOnMouseClicked(new ManejoRaton());
 
         // RECORDAR CREDENCIALES
         recordarLogin.setOnMouseExited(new ManejoRaton());
@@ -94,6 +95,19 @@ public class Controladora_Login implements Initializable {
 
                 } else if (event.getEventType() == MouseEvent.MOUSE_RELEASED) {
                     inicioLogin.getScene().setCursor(Cursor.OPEN_HAND);
+                } else if (event.getEventType() == MouseEvent.MOUSE_CLICKED) {
+                    Parent root;
+                    Scene scene;
+                    Stage stage;
+                    try {
+                        root = FXMLLoader.load(getClass().getResource("../vistas/tabla.fxml"));
+                        scene = new Scene(root, 900, 900);
+                        stage = (Stage) registroLogin.getScene().getWindow();
+                        stage.setScene(scene);
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
 

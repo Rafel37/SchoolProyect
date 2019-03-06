@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import utils.Ciclo;
 import utils.Persona;
 
 import java.io.IOException;
@@ -20,7 +21,7 @@ import java.util.ResourceBundle;
 
 public class Controladora_Registro implements Initializable, EventHandler<ActionEvent> {
 
-    ObservableList<Persona> listaCombo;
+    ObservableList<Ciclo> listaCombo;
 
     @FXML
     JFXButton bRegistrarRegistro, bIndice;
@@ -45,14 +46,13 @@ public class Controladora_Registro implements Initializable, EventHandler<Action
     }
 
     private void rellenarLista() {
-        listaCombo.add(new Persona("Rafa", "Perez", 123));
-        listaCombo.add(new Persona("Cuvi", "Iglesias", 321));
-        listaCombo.add(new Persona("Paquito", "Francis", 345));
-//        listaCombo.addAll(new Persona("Rafa", "Perez", 123),
-//                          new Persona("Rafa", "Perez", 123));
+        listaCombo.add(new Ciclo("ASIR"));
+        listaCombo.add(new Ciclo("DAM"));
+        listaCombo.add(new Ciclo("DAW"));
+        listaCombo.add(new Ciclo("AF"));
         comboRegistro.setItems(listaCombo);
         comboRegistro.setValue(listaCombo.get(0));
-        Persona persona = (Persona) comboRegistro.getSelectionModel().getSelectedItem();
+        Ciclo ciclo = (Ciclo) comboRegistro.getSelectionModel().getSelectedItem();
     }
 
     private void instancias() {
