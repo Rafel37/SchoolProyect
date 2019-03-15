@@ -1,5 +1,6 @@
 package controladoras;
 
+import basedatos.DatosBaseDatos;
 import com.jfoenix.controls.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,8 +16,13 @@ import javafx.stage.Stage;
 import utils.Ciclo;
 import utils.Persona;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class Controladora_Registro implements Initializable, EventHandler<ActionEvent> {
@@ -37,6 +43,8 @@ public class Controladora_Registro implements Initializable, EventHandler<Action
 
     @FXML
     JFXComboBox comboRegistro;
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -72,6 +80,15 @@ public class Controladora_Registro implements Initializable, EventHandler<Action
                 System.out.println("tecla pulsada");
             }
         });
+
+        while (nombreRegistro.getText().isEmpty() &&
+                apellidosRegistro.getText().isEmpty() &&
+                correo1Registro.getText().isEmpty()  &&
+                correo2Registro.getText().equals(correo1Registro.getText()) &&
+                passRegistro.getText().isEmpty() &&
+                comboRegistro.getItems().isEmpty()) {
+            bRegistrarRegistro.setDisable(false);
+        }
     }
 
     @Override
@@ -83,17 +100,19 @@ public class Controladora_Registro implements Initializable, EventHandler<Action
         // REGISTRARSE
         if (event.getSource() == bRegistrarRegistro) {
 
+
             // FALTAN CAMPOS O CORREOS DEFERENTES
             if (  nombreRegistro.getText().isEmpty() &&
                   apellidosRegistro.getText().isEmpty() &&
                   correo1Registro.getText().isEmpty()  &&
                   correo2Registro.getText().equals(correo1Registro.getText()) &&
                   passRegistro.getText().isEmpty() &&
-                  comboRegistro.getItems().isEmpty() &&
-                  conocimientosCheckRegistro.isDisable()){
+                  comboRegistro.getItems().isEmpty() ){
 
+
+                JOptionPane.showMessageDialog(null, "Rellene todos los datos, por favor.", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
                 System.out.println("faltan campos por rellenar o los correos no coinciden");
-            }
+                    }
 
             // TODOS LOS CAMPOS RELLENOS CORRECTAMENTE
             else {
@@ -110,7 +129,7 @@ public class Controladora_Registro implements Initializable, EventHandler<Action
                             passRegistro.getText(),
                             comboRegistro.getValue().toString(),
                             aux);
-                    utils.Sentencias.registrarPersona(p);
+                    registrarPersona(p);
 
 
                     root = FXMLLoader.load(getClass().getResource("../vistas/login.fxml"));
@@ -134,6 +153,44 @@ public class Controladora_Registro implements Initializable, EventHandler<Action
                 e.printStackTrace();
             }
         }
+    }
+    public static void registrarPersona(Persona persona){
+        Thread thread = new Thread(){
+            @Override
+            public void run() {
+
+                Connection connection = null;
+                try {
+                    connection = basedatos.Conexion.dbConnector();
+                    String query = "INSERT INTO %s (%s, %s, %s, %s, %s, %s) VALUES ('%s', '%s', '%s', '%s', '%s', '%s');";
+                    ResultSet rs = connection.createStatement().executeQuery(String.format(query
+                            , DatosBaseDatos.TAB_TABLAALUMNOS
+                            , DatosBaseDatos.TAB_COL_NOMBRE
+                            , DatosBaseDatos.TAB_COL_APELLIDO
+                            , DatosBaseDatos.TAB_COL_CORREO
+                            , DatosBaseDatos.TAB_COL_PASS
+                            , DatosBaseDatos.TAB_COL_CICLO
+                            , DatosBaseDatos.TAB_COL_CONOCIMIENTO
+                            , utils.Persona.getNombre()
+                            , utils.Persona.getApellido()
+                            , utils.Persona.getCorreo()
+                            , utils.Persona.getPassword()
+                            , utils.Persona.getCiclo()
+                            , utils.Persona.getConocimientos()
+                    ));
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        connection.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+        thread.start();
     }
 
 
