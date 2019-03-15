@@ -1,8 +1,8 @@
 package basedatos;
 
 public interface DatosBaseDatos {
-    public static String TAB_TABLAUSUARIOS             = "USUARIOS";
     public static String TAB_INICIO_COL_ID             = "ID";
+    public static String TAB_TABLAUSUARIOS             = "USUARIOS";
     public static String TAB_INICIO_COL_NOMBRE         = "NOMBRE";
     public static String TAB_INICIO_COL_APELLIDO       = "APELLIDOS";
     public static String TAB_INICIO_COL_CORREO         = "CORREO";
