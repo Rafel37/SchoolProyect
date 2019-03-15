@@ -162,8 +162,10 @@ public class Controladora_Registro implements Initializable, EventHandler<Action
                 Connection connection = null;
                 try {
                     connection = basedatos.Conexion.dbConnector();
-                    String query = "INSERT INTO %s (%s, %s, %s, %s, %s, %s) VALUES ('%s', '%s', '%s', '%s', '%s', '%s');";
-                    ResultSet rs = connection.createStatement().executeQuery(String.format(query
+                    String query = "INSERT INTO %s (%s, %s, %s, %s, %s, %s)"+
+                                   "VALUES ('%s', '%s', '%s', '%s', '%s', '%s');";
+                    Statement st = connection.createStatement();
+                    st.executeQuery(String.format(query
                             , DatosBaseDatos.TAB_TABLAALUMNOS
                             , DatosBaseDatos.TAB_COL_NOMBRE
                             , DatosBaseDatos.TAB_COL_APELLIDO
@@ -178,15 +180,9 @@ public class Controladora_Registro implements Initializable, EventHandler<Action
                             , utils.Persona.getCiclo()
                             , utils.Persona.getConocimientos()
                     ));
-
+                    connection.close();
                 } catch (SQLException e) {
                     e.printStackTrace();
-                } finally {
-                    try {
-                        connection.close();
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
                 }
             }
         };
