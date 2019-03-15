@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.image.*?>
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" style="-fx-background-image: url(recursos/fondo.jpeg);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladoras.Controladora_Registro">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" style="-fx-background-image: url(recursos/fondo.jpeg);" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladoras.Controladora_Registro">
    <center>
       <GridPane maxHeight="800.0" maxWidth="800.0" minHeight="200.0" minWidth="200.0" prefHeight="527.0" prefWidth="592.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -25,24 +30,24 @@
             <Insets bottom="35.0" left="30.0" right="30.0" top="30.0" />
          </padding>
          <children>
+            <JFXButton fx:id="bIndice" prefHeight="58.0" prefWidth="62.0" style="-fx-background-image: url(recursos/indice.jpeg);" GridPane.valignment="TOP" />
+            <JFXTextField fx:id="nombreRegistro" promptText="Introduce nombre" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+            <JFXTextField fx:id="apellidosRegistro" promptText="Introduce apellidos" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <JFXTextField fx:id="correo1Registro" promptText="Introduce correo" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+            <JFXTextField fx:id="correo2Registro" promptText="Confirma correo" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <JFXPasswordField fx:id="passRegistro" promptText="Introduce contraseña" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+            <JFXComboBox fx:id="comboRegistro" maxWidth="1.7976931348623157E308" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
             <JFXCheckBox fx:id="conocimientosCheckRegistro" checkedColor="#000096" text="Conocimientos previos" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
             <JFXButton fx:id="bRegistrarRegistro" text="Registrar" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets bottom="10.0" />
                </GridPane.margin>
             </JFXButton>
-            <JFXTextField fx:id="apellidosRegistro" promptText="Introduce apellidos" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-            <JFXTextField fx:id="nombreRegistro" promptText="Introduce nombre" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-            <JFXPasswordField fx:id="passRegistro" promptText="Introduce contraseña" GridPane.rowIndex="3" GridPane.valignment="TOP" />
-            <JFXTextField fx:id="correo2Registro" promptText="Confirma correo" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-            <JFXTextField fx:id="correo1Registro" promptText="Introduce correo" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-            <JFXComboBox fx:id="comboRegistro" maxWidth="1.7976931348623157E308" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
             <Label alignment="CENTER" prefHeight="26.0" prefWidth="126.0" style="-fx-background-color: WHITE;" text="REGISTRO" textAlignment="CENTER" GridPane.halignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <JFXButton fx:id="bIndice" prefHeight="58.0" prefWidth="62.0" style="-fx-background-image: url(recursos/indice.jpeg);" GridPane.valignment="TOP" />
          </children>
          <BorderPane.margin>
             <Insets left="5.0" />

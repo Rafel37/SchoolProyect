@@ -88,7 +88,9 @@ public class Controladora_Registro implements Initializable, EventHandler<Action
                   apellidosRegistro.getText().isEmpty() &&
                   correo1Registro.getText().isEmpty()  &&
                   correo2Registro.getText().equals(correo1Registro.getText()) &&
-                  passRegistro.getText().isEmpty()  ) {
+                  passRegistro.getText().isEmpty() &&
+                  comboRegistro.getItems().isEmpty() &&
+                  conocimientosCheckRegistro.isDisable()){
 
                 System.out.println("faltan campos por rellenar o los correos no coinciden");
             }
@@ -96,6 +98,21 @@ public class Controladora_Registro implements Initializable, EventHandler<Action
             // TODOS LOS CAMPOS RELLENOS CORRECTAMENTE
             else {
                 try {
+                    int aux;
+                    if (conocimientosCheckRegistro.isSelected()) {
+                        aux = 1;
+                    } else {
+                        aux = 0;
+                    }
+                    Persona p = new Persona(nombreRegistro.getText(),
+                            apellidosRegistro.getText(),
+                            correo1Registro.getText(),
+                            passRegistro.getText(),
+                            comboRegistro.getValue().toString(),
+                            aux);
+                    utils.Sentencias.registrarPersona(p);
+
+
                     root = FXMLLoader.load(getClass().getResource("../vistas/login.fxml"));
                     scene = new Scene(root, 800, 800);
                     stage = (Stage) bRegistrarRegistro.getScene().getWindow();

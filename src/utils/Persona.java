@@ -2,29 +2,43 @@ package utils;
 
 public class Persona {
 
-    String nombre, apellido;
-    int telefono;
+    static String nombre;
+    static String apellido;
+    static String correo;
+    static String password;
+    static String ciclo;
+    static int conocimientos;
 
-    public Persona(String nombre, String apellido, int telefono) {
+    public Persona(String nombre, String apellido, String correo, String password, String ciclo, int conocimientos) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.telefono = telefono;
+        this.correo = correo;
+        this.password = password;
+        this.ciclo = ciclo;
+        this.conocimientos = conocimientos;
     }
 
-    public String getNombre() {
+    public static String getNombre() {
         return nombre;
     }
 
-    public String getApellido() {
+    public static String getApellido() {
         return apellido;
     }
 
-    public int getTelefono() {
-        return telefono;
+    public static String getCorreo() {
+        return correo;
     }
 
-    @Override
-    public String toString() {
-        return getNombre();
+    public static String getPassword() {
+        return password;
+    }
+
+    public static String getCiclo() {
+        return ciclo;
+    }
+
+    public static int getConocimientos() {
+        return conocimientos;
     }
 }

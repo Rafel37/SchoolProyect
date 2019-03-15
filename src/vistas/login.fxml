@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="1000.0" maxWidth="1000.0" minHeight="300.0" minWidth="300.0" prefHeight="900.0" prefWidth="900.0" style="-fx-background-image: url(recursos/fondo.jpeg);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladoras.Controladora_Login">
+<BorderPane maxHeight="1000.0" maxWidth="1000.0" minHeight="300.0" minWidth="300.0" prefHeight="900.0" prefWidth="900.0" style="-fx-background-image: url(recursos/fondo.jpeg);" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladoras.Controladora_Login">
    <center>
       <GridPane maxHeight="800.0" maxWidth="800.0" minHeight="300.0" minWidth="300.0" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -32,14 +36,14 @@
                </GridPane.margin>
             </ImageView>
             <JFXTextField fx:id="usuarioLogin" alignment="CENTER" promptText="Introduce usuario" GridPane.rowIndex="1" />
+            <JFXPasswordField fx:id="passLogin" alignment="CENTER" promptText="Introduce contraseña" GridPane.rowIndex="2" />
             <JFXCheckBox fx:id="recordarLogin" alignment="CENTER" checkedColor="#000096" contentDisplay="CENTER" text="Recordar sesión" textAlignment="CENTER" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin></JFXCheckBox>
-            <JFXPasswordField fx:id="passLogin" alignment="CENTER" promptText="Introduce contraseña" GridPane.rowIndex="2" />
+            <JFXButton fx:id="inicioLogin" prefHeight="25.0" prefWidth="675.0" text="Iniciar sesion" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
             <Label fx:id="olvidoLogin" text="He olvidado mi contraseña" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
             <Label fx:id="registroLogin" text="Registrarme" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
-            <JFXButton fx:id="inicioLogin" prefHeight="25.0" prefWidth="675.0" text="Iniciar sesion" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
          </children>
          <BorderPane.margin>
             <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
