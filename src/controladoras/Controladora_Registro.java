@@ -44,7 +44,7 @@ public class Controladora_Registro implements Initializable, EventHandler<Action
     @FXML
     JFXComboBox comboRegistro;
 
-
+    Persona p;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -123,7 +123,7 @@ public class Controladora_Registro implements Initializable, EventHandler<Action
                     } else {
                         aux = 0;
                     }
-                    Persona p = new Persona(nombreRegistro.getText(),
+                    p = new Persona(nombreRegistro.getText(),
                             apellidosRegistro.getText(),
                             correo1Registro.getText(),
                             passRegistro.getText(),
@@ -154,7 +154,7 @@ public class Controladora_Registro implements Initializable, EventHandler<Action
             }
         }
     }
-    public static void registrarPersona(Persona persona){
+    public void registrarPersona(Persona persona){
         Thread thread = new Thread(){
             @Override
             public void run() {
@@ -165,7 +165,7 @@ public class Controladora_Registro implements Initializable, EventHandler<Action
                     String query = "INSERT INTO %s (%s, %s, %s, %s, %s, %s)"+
                                    "VALUES ('%s', '%s', '%s', '%s', '%s', '%s');";
                     Statement st = connection.createStatement();
-                    st.executeQuery(String.format(query
+                    st.execute(String.format(query
                             , DatosBaseDatos.TAB_TABLAALUMNOS
                             , DatosBaseDatos.TAB_COL_NOMBRE
                             , DatosBaseDatos.TAB_COL_APELLIDO
@@ -173,12 +173,12 @@ public class Controladora_Registro implements Initializable, EventHandler<Action
                             , DatosBaseDatos.TAB_COL_PASS
                             , DatosBaseDatos.TAB_COL_CICLO
                             , DatosBaseDatos.TAB_COL_CONOCIMIENTO
-                            , utils.Persona.getNombre()
-                            , utils.Persona.getApellido()
-                            , utils.Persona.getCorreo()
-                            , utils.Persona.getPassword()
-                            , utils.Persona.getCiclo()
-                            , utils.Persona.getConocimientos()
+                            , p.getNombre()
+                            , p.getApellido()
+                            , p.getCorreo()
+                            , p.getPassword()
+                            , p.getCiclo()
+                            , p.getConocimientos()
                     ));
                     connection.close();
                 } catch (SQLException e) {

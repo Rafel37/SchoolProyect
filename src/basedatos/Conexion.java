@@ -12,7 +12,7 @@ public class Conexion {
             e.printStackTrace();
         }
         String host = "localhost";
-        String dbname = "bdschool";
+        String dbname = "alumnos";
         String url = "jdbc:mysql://" + host + "/" + dbname +"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         String username = "root";
         String password = "";

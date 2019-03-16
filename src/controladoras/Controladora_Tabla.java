@@ -16,13 +16,16 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
+
+import static basedatos.DatosBaseDatos.TAB_TABLAALUMNOS;
 
 public class Controladora_Tabla implements Initializable {
 
 
     @FXML
-    TableView tabla;
+    TableView<Persona> tabla;
     @FXML
     TableColumn<Persona,String> tNombre, tApellido, tCorreo;
 
@@ -34,14 +37,15 @@ public class Controladora_Tabla implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         instancias();
-        configurarTabla();
         rellenarTabla();
         conexion = new Conexion();
         listaTabla = FXCollections.observableArrayList();
     }
     private void instancias() {
         listaTabla = FXCollections.observableArrayList();
-        listaFiltrada = new FilteredList<Persona>(listaTabla, null);
+        listaFiltrada = new FilteredList<Persona>(listaTabla);
+        configurarTabla();
+        tabla.setItems(listaFiltrada);
     }
     private void configurarTabla() {
         tNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
@@ -56,26 +60,25 @@ public class Controladora_Tabla implements Initializable {
                 Connection connection = null;
                 try {
                     connection = Conexion.dbConnector();
-                    String query = "SELECT DISTINCT %s FROM %s";
-                    ResultSet rs = connection.createStatement()
-                            .executeQuery(String.format(query
-                                    , DatosBaseDatos.TAB_COL_NOMBRE
-                                    , DatosBaseDatos.TAB_COL_APELLIDO
-                                    , DatosBaseDatos.TAB_COL_CORREO));
-
+                    String query;
+                    Statement st = connection.createStatement();
+                    query = "SELECT * FROM %s";
+                    ResultSet rs = st.executeQuery(String.format(query, TAB_TABLAALUMNOS));
                     while (rs.next()) {
-//                        listaTabla.add(rs.getString(DatosBaseDatos.TAB_TABLAALUMNOS));
+                        System.out.println(rs.getString(DatosBaseDatos.TAB_COL_NOMBRE));
+                        listaTabla.add(new Persona(rs.getString(DatosBaseDatos.TAB_COL_NOMBRE), rs.getString(DatosBaseDatos.TAB_COL_APELLIDO),rs.getString(DatosBaseDatos.TAB_COL_CORREO)));
+                        System.out.println(listaTabla.get(0).getNombre());
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
-                } finally {
-                    try {
-                        connection.close();
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
+                }
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
             }
-        };
 
+        };
+        thread.start();
 }}

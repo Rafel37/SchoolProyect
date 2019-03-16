@@ -1,44 +1,53 @@
 package utils;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 public class Persona {
 
-    static String nombre;
-    static String apellido;
-    static String correo;
-    static String password;
-    static String ciclo;
-    static int conocimientos;
+    SimpleStringProperty nombre;
+    SimpleStringProperty apellido;
+    SimpleStringProperty correo;
+    SimpleStringProperty password;
+    SimpleStringProperty ciclo;
+    SimpleIntegerProperty conocimientos;
 
     public Persona(String nombre, String apellido, String correo, String password, String ciclo, int conocimientos) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.correo = correo;
-        this.password = password;
-        this.ciclo = ciclo;
-        this.conocimientos = conocimientos;
+        this.nombre = new SimpleStringProperty(nombre);
+        this.apellido = new SimpleStringProperty(apellido);
+        this.correo = new SimpleStringProperty(correo);
+        this.password = new SimpleStringProperty(password);
+        this.ciclo = new SimpleStringProperty(ciclo);
+        this.conocimientos = new SimpleIntegerProperty(conocimientos);
     }
 
-    public static String getNombre() {
+    public Persona(String nombre, String apellido, String correo) {
+        this.nombre = new SimpleStringProperty(nombre);
+        this.apellido = new SimpleStringProperty(apellido);
+        this.correo = new SimpleStringProperty(correo);
+    }
+
+    public  SimpleStringProperty getNombre() {
         return nombre;
     }
 
-    public static String getApellido() {
+    public  SimpleStringProperty getApellido() {
         return apellido;
     }
 
-    public static String getCorreo() {
+    public  SimpleStringProperty getCorreo() {
         return correo;
     }
 
-    public static String getPassword() {
+    public  SimpleStringProperty getPassword() {
         return password;
     }
 
-    public static String getCiclo() {
+    public  SimpleStringProperty getCiclo() {
         return ciclo;
     }
 
-    public static int getConocimientos() {
+    public  SimpleIntegerProperty getConocimientos() {
         return conocimientos;
     }
 }
